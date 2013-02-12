@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<layers>
+  <layer
+    name="matejc.myportal"
+    interface="matejc.myportal.interfaces.IMatejcMyportalLayer"
+  />
+</layers>

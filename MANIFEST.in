@@ -1,0 +1,2 @@
+graft src/matejc
+include *.cfg *.rst *.in
