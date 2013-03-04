@@ -9,5 +9,5 @@ script:
   - make tests
 
 notifications:
-  irc:
-    - "irc.sioff.net#kiberpipa"
+  mail:
+    - plus64@gmail.com
