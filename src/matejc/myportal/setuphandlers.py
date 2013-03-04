@@ -9,7 +9,7 @@ def runCustomCode(site):
 
     @param site: Plone site
     """
-    print "###################### INSTALL PROCEDURE ######################"
+    print "################### BEGIN INSTALL PROCEDURE ###################"
 
     if not api.group.get(groupname="staff"):
         api.group.create(
@@ -63,6 +63,8 @@ def runCustomCode(site):
             id="myblogentry",
             container=myblog_coll
         )
+
+    print "#################### END INSTALL PROCEDURE ####################"
 
 
 def setupVarious(context):
