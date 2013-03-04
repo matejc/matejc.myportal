@@ -2,6 +2,7 @@
     xmlns="http://namespaces.zope.org/zope"
     xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     i18n_domain="matejc.myportal">
 
     <!-- Set overrides folder for Just-a-Bunch-Of-Templates product -->
@@ -13,5 +14,13 @@
       name="matejc.myportal"
       directory="static"
       />
+
+    <!-- Register the import step -->
+    <genericsetup:importStep
+        name="matejc.myportal"
+        title="matejc.myportal special import handlers"
+        description=""
+        handler="matejc.myportal.setuphandlers.setupVarious"
+        />
 
 </configure>

@@ -43,6 +43,7 @@ setup(
         'plone.api',
         'setuptools',
         'z3c.jbot',
+        'Products.Scrawl',
     ],
     extras_require={
         'test': [
