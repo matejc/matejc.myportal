@@ -9,8 +9,6 @@ def runCustomCode(site):
 
     @param site: Plone site
     """
-    print "################### BEGIN INSTALL PROCEDURE ###################"
-
     if not api.group.get(groupname="staff"):
         api.group.create(
             groupname="staff",
@@ -20,10 +18,10 @@ def runCustomCode(site):
 
     blogs_folder = api.content.get(path="/blogs")
 
-    if blogs_folder:                        # TODO: FOR DEBUG ONLY!!
-        print "deleting blogs folder to re-add it"
-        api.content.delete(blogs_folder)
-        blogs_folder = None
+    #if blogs_folder:                        # TODO: FOR DEBUG ONLY!!
+    #    print "deleting blogs folder to re-add it"
+    #    api.content.delete(blogs_folder)
+    #    blogs_folder = None
 
     if not blogs_folder:
         blogs_folder = api.content.create(
@@ -63,8 +61,6 @@ def runCustomCode(site):
             id="myblogentry",
             container=myblog_coll
         )
-
-    print "#################### END INSTALL PROCEDURE ####################"
 
 
 def setupVarious(context):
