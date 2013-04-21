@@ -12,7 +12,6 @@ def runCustomCode(site):
     if not api.group.get(groupname="staff"):
         api.group.create(
             groupname="staff",
-            title="Staff",
             roles=['Reader'],
         )
 
@@ -26,9 +25,18 @@ def runCustomCode(site):
     if not blogs_folder:
         blogs_folder = api.content.create(
             type="Folder",
-            title="Blogs",
             id="blogs",
             container=site,
+        )
+        myblog_folder = api.content.create(
+            type="Folder",
+            id="myblog",
+            container=blogs_folder,
+        )
+        api.content.create(
+            type="News Item",
+            id="myblogentry",
+            container=myblog_folder
         )
 
     # grant roles right after creation of context
@@ -39,28 +47,31 @@ def runCustomCode(site):
     )
 
     try:
-        api.content.get(path="/blogs/myblog")
-    except AttributeError:
+        assert api.content.get(path="/collectmyblog")
+    except:
         api.content.create(
             type="Collection",
-            title="MyBlog",
-            id="myblog",
-            container=site['blogs']
+            id="collectmyblog",
+            container=site
         )
-        myblog_coll = api.content.get(path="/blogs/myblog")
-        query = [{
-            'i': 'Type',
-            'o': 'plone.app.querystring.operation.string.is',
-            'v': 'Blog Entry',
-        }]
+        myblog_coll = api.content.get(path="/collectmyblog")
+        query = [
+            {
+                'i': 'portal_type',
+                'o': 'plone.app.querystring.operation.selection.is',
+                'v': 'News Item',
+            },
+            {
+                'i': 'path',
+                'o': 'plone.app.querystring.operation.string.path',
+                'v': '/blogs/myblog',
+            }
+        ]
         myblog_coll.setQuery(query)
 
-        api.content.create(
-            type="Blog Entry",
-            title="MyBlogEntry",
-            id="myblogentry",
-            container=myblog_coll
-        )
+        #myblog_coll.setExcludeFromNav(True)
+
+    blogs_folder.setExcludeFromNav(True)
 
 
 def setupVarious(context):
