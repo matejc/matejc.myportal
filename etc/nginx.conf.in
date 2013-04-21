@@ -13,11 +13,7 @@ server {
     server_name ${config:hostname};
     keepalive_timeout    70;
 
-    # add request_time to log format so we can graph it with munin
-    log_format ${config:shortname} '$remote_addr - $remote_user [$time_local]  '
-                   '"$request" $status $body_bytes_sent '
-                   '"$http_referer" "$http_user_agent" - $request_time';
-    access_log /var/log/nginx/${config:shortname}.access.log ${config:shortname};
+    access_log /var/log/nginx/${config:shortname}.access.log;
 
     ssl_session_cache    shared:SSL:10m;
     ssl_session_timeout  10m;
