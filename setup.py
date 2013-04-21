@@ -43,7 +43,6 @@ setup(
         'plone.api',
         'setuptools',
         'z3c.jbot',
-        'Products.Scrawl',
         'quintagroup.theme.pythonreel',
         'Products.ContentWellPortlets',
         'Products.PloneFormGen'

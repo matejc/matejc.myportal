@@ -2,7 +2,6 @@
 <metadata>
   <version>1</version>
   <dependencies>
-    <dependency>profile-Products.Scrawl:default</dependency>
     <dependency>profile-Products.ContentWellPortlets:default</dependency>
     <dependency>profile-Products.PloneFormGen:default</dependency>
     <dependency>profile-quintagroup.theme.pythonreel:default</dependency>
