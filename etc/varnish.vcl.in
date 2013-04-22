@@ -38,6 +38,14 @@ sub vcl_recv {
         # We only deal with GET and HEAD by default
         return(pass);
     }
+
+    /* If the request is for pictures, javascript, css, etc */
+    if (req.url ~ "\.(jpg|jpeg|png|gif|css|js)$") {
+        /* Remove the cookie and make the request static */
+        unset req.http.cookie;
+        return (lookup);
+    }
+
     call normalize_accept_encoding;
     call annotate_request;
     return(lookup);
