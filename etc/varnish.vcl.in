@@ -39,13 +39,6 @@ sub vcl_recv {
         return(pass);
     }
 
-    /* If the request is for pictures, javascript, css, etc */
-    if (req.url ~ "\.(jpg|jpeg|png|gif|css|js)$") {
-        /* Remove the cookie and make the request static */
-        unset req.http.cookie;
-        return (lookup);
-    }
-
     call normalize_accept_encoding;
     call annotate_request;
     return(lookup);
@@ -88,7 +81,7 @@ sub vcl_deliver {
 # Optimize the Accept-Encoding variant caching
 sub normalize_accept_encoding {
     if (req.http.Accept-Encoding) {
-        if (req.url ~ "\.(jpe?g|png|gif|swf|pdf|gz|tgz|bz2|tbz|zip)$" || req.url ~ "/image_[^/]*$") {
+        if (req.url ~ "\.(jpe?g|png|gif|swf|pdf|gz|tgz|bz2|tbz|zip|js)$" || req.url ~ "/image_[^/]*$") {
             remove req.http.Accept-Encoding;
         } elsif (req.http.Accept-Encoding ~ "gzip") {
             set req.http.Accept-Encoding = "gzip";
