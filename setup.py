@@ -45,7 +45,8 @@ setup(
         'z3c.jbot',
         'quintagroup.theme.pythonreel',
         'Products.ContentWellPortlets',
-        'Products.PloneFormGen'
+        'Products.PloneFormGen',
+        'plone.formwidget.captcha'
     ],
     extras_require={
         'test': [
