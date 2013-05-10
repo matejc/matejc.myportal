@@ -4,5 +4,6 @@
   <dependencies>
     <dependency>profile-quintagroup.theme.pythonreel:default</dependency>
     <dependency>profile-plone.formwidget.captcha:default</dependency>
+    <dependency>profile-collective.disqus:default</dependency>
   </dependencies>
 </metadata>

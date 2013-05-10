@@ -46,7 +46,8 @@ setup(
         'quintagroup.theme.pythonreel',
         'Products.ContentWellPortlets',
         'Products.PloneFormGen',
-        'plone.formwidget.captcha'
+        'plone.formwidget.captcha',
+        'collective.disqus',
     ],
     extras_require={
         'test': [
