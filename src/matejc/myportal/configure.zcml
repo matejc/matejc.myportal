@@ -1,4 +1,5 @@
 <configure
+    xmlns:plone="http://namespaces.plone.org/plone"
     xmlns="http://namespaces.zope.org/zope"
     xmlns:cmf="http://namespaces.zope.org/cmf"
     xmlns:five="http://namespaces.zope.org/five"
@@ -27,5 +28,7 @@
         description="Extension profile for matejc.myportal."
         provides="Products.GenericSetup.interfaces.EXTENSION"
         />
+
+    <plone:static name="mytheme" directory="theme" type="theme" />
 
 </configure>
