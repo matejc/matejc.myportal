@@ -9,7 +9,7 @@ server {
     access_log /var/log/nginx/${config:shortname}.access.log;
 
     location / {
-        proxy_pass http://127.0.0.1:${ports:varnish}/VirtualHostBase/http/${config:hostname}/${config:shortname}/VirtualHostRoot/;
+        proxy_pass http://127.0.0.1:${ports:zope1}/VirtualHostBase/http/${config:hostname}/${config:shortname}/VirtualHostRoot/;
         proxy_set_header        Host            $host;
         proxy_set_header        X-Real-IP       $remote_addr;
         proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -19,26 +19,6 @@ server {
 server {
     listen ${ips:server}:443 ssl default_server;
     server_name ${config:hostname};
-    keepalive_timeout    70;
-
-    access_log /var/log/nginx/${config:shortname}.access.log;
-
-    ssl_session_cache    shared:SSL:10m;
-    ssl_session_timeout  10m;
-    ssl_certificate     /etc/nginx/certs/${config:hostname}.crt;
-    ssl_certificate_key /etc/nginx/certs/${config:hostname}.key;
-
-    location / {
-        proxy_pass http://127.0.0.1:${ports:varnish}/VirtualHostBase/https/${config:hostname}/${config:shortname}/VirtualHostRoot/;
-        proxy_set_header        Host            $host;
-        proxy_set_header        X-Real-IP       $remote_addr;
-        proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
-    }
-}
-
-server {
-    listen ${ips:server}:443 ssl;
-    server_name instance.${config:hostname};
     keepalive_timeout    70;
 
     access_log /var/log/nginx/${config:shortname}.access.log;
